@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雨昕 Reshin 云音乐</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    const audioUrl = new URLSearchParams(window.location.search).get('url');
+    if (audioUrl) {
+      const ap = new APlayer({
+        container: document.getElementById('player'),
+        audio: [{
+          name: '雨昕的翻唱歌曲',
+          artist: '雨昕 Reshin',
+          url: audioUrl,
+          cover: 'https://mirror.ghproxy.com/',
+          type: 'auto'
+        }],
+        lrcType: 0,
+        theme: '#b7daff',
+        mini: false,
+        autoplay: true,
+        loop: 'none',
+        order: 'list',
+        preload: 'auto',
+        volume: 1,
+        mutex: true,
+        listFolded: false,
+        listMaxHeight: '200px',
+        storageName: 'aplayer-setting'
+      });
+    } else {
+      document.body.innerHTML = '<p>丢失的音频 URL。</p>';
+    }
+  </script>
+</body>
+</html>
